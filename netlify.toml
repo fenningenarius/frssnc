@@ -104,6 +104,41 @@
 #   to = "/index.html"
 #   status = 200
 # 
+# [[redirects]]
+#   from = "/rw"
+#   to = "/index.html"
+#   status = 200
+
+## This rule redirects to an external API, signing requests with a secret
+# [[redirects]]
+#   from = "/rw"
+#   to = "https://www.google.com/alerts/feeds/16033754568212241292/6669787002293139114"
+#   status = 200
+#   force = true # COMMENT: ensure that we always redirect
+#   headers = {X-From = "Netlify"}
+#   signed = "API_SIGNATURE_TOKEN"
+
+[[redirects]]
+  from = "/rss/nc"
+  to = "/fc.rss"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rss/rw"
+  to = "https://www.google.com/alerts/feeds/16033754568212241292/6669787002293139114"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rss/cb"
+  to = "https://www.google.com/alerts/feeds/16033754568212241292/5694586890950662570"
+  status = 200
+  force = true
+
+
+
+#
 # [[headers]]
 #   # Define which paths this specific [[headers]] block will cover.
 #   for = "/*"
@@ -126,7 +161,7 @@
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
-  for = "/*.rss"
+  for = "/rss/*"
   [headers.values]
     Content-Type = "text/xml; charset=UTF-8"
 
