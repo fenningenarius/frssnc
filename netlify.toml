@@ -128,5 +128,5 @@
   # Define which paths this specific [[headers]] block will cover.
   for = "/*.rss"
   [headers.values]
-    Content-Type: "text/xml; charset=UTF-8"
+    Content-Type = "text/xml; charset=UTF-8"
 
